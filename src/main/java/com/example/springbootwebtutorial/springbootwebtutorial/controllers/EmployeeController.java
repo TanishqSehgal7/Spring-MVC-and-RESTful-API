@@ -1,13 +1,23 @@
 package com.example.springbootwebtutorial.springbootwebtutorial.controllers;
 
 import com.example.springbootwebtutorial.springbootwebtutorial.dto.EmployeeDto;
+import com.example.springbootwebtutorial.springbootwebtutorial.entities.EmployeeEntity;
+import com.example.springbootwebtutorial.springbootwebtutorial.repositories.EmployeeRepository;
+import com.example.springbootwebtutorial.springbootwebtutorial.services.EmployeeService;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
+import java.util.List;
 
 @RestController
 @RequestMapping(path = "/employees")
 public class EmployeeController {
+
+    private final EmployeeService employeeService;
+
+
+    public EmployeeController(EmployeeService employeeService) {
+        this.employeeService = employeeService;
+    }
 
     /*
          @RestController ensures that the controller is REST in nature
@@ -27,21 +37,19 @@ public class EmployeeController {
 
     @GetMapping(path = "/{employeeId}")
     public EmployeeDto getEmployeeById(@PathVariable(name = "employeeId") Long id) {
-        return new EmployeeDto(id,"Tanishq","tanishqsehgal.ts@gmail.com",
-                24, LocalDate.of(2024,1,1),true);
+        return employeeService.getEmployeeById(id);
     }
 
     @GetMapping()
-    public String getAllEmployees(@RequestParam(required = false, name = "inputAge") Integer age,
-                                  @RequestParam(required = false) String sortBy) {
+    public List<EmployeeDto> getAllEmployees(@RequestParam(required = false, name = "inputAge") Integer age,
+                                                @RequestParam(required = false) String sortBy) {
                                     // optional parameter using required=false
-        return "Employee age is: " + age + ", Sorted By " + sortBy;
+        return employeeService.getAllEmployyes();
     }
 
     @PostMapping()
     public EmployeeDto createNewEmployee(@RequestBody EmployeeDto inputEmployee) {
-        inputEmployee.setId(100L);
-        return inputEmployee;
+        return employeeService.createNewEmployee(inputEmployee);
     }
 
     @PutMapping
