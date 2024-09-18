@@ -1,9 +1,18 @@
 package com.example.springbootwebtutorial.springbootwebtutorial.dto;
 
 import com.example.springbootwebtutorial.springbootwebtutorial.controllers.EmployeeController;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.LocalDate;
 
+//@Getter
+//@Setter
+//@AllArgsConstructor
+//@NoArgsConstructor
 public class EmployeeDto {
 
     // Data Transfer Object
@@ -13,6 +22,8 @@ public class EmployeeDto {
     private String email;
     private Integer age;
     private LocalDate dateOfJoining;
+
+    @JsonProperty("isActive") // fix for the null value issue of isActive in response
     private Boolean isActive;
 
     public EmployeeDto() { // default constructor
@@ -68,11 +79,11 @@ public class EmployeeDto {
         this.dateOfJoining = dateOfJoining;
     }
 
-    public Boolean getActive() {
+    public Boolean getIsActive() {
         return isActive;
     }
 
-    public void setActive(Boolean active) {
+    public void setIsActive(Boolean active) {
         isActive = active;
     }
 }
