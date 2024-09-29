@@ -1,5 +1,6 @@
 package com.example.springbootwebtutorial.springbootwebtutorial.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -14,18 +15,17 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class DepartmentDto {
 
-//    @NotNull(message = "Department id cannot be null")
     private Long id;
 
-//    @NotBlank(message = "Department name cannot be blank.")
+    @NotBlank(message = "Department name cannot be blank.")
     private String title;
 
-//    @AssertTrue(message = "Department should be active.")
-//    @NotBlank(message = "isActive for department cannot be blank")
+    @AssertTrue(message = "Department should be active.")
+    @NotNull(message = "isActive for department cannot be blank")
+    @JsonProperty("isActive")
     private boolean isActive;
 
-//    @PastOrPresent(message = "created date for department should be either a past date or the current date")
-//    @NotBlank(message = "created date cannot be blank")
-//    @Pattern(regexp = "yyyy-MM-dd")
+    @PastOrPresent(message = "created date for department should be either a past date or the current date")
+    @NotNull(message = "created date cannot be blank")
     private LocalDate createdAt;
 }
