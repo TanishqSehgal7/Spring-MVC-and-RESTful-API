@@ -11,16 +11,16 @@ public class ApiResponse<T> {
 
     @JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss")
     private LocalDateTime timeStamp;
-    private T data;
+    private T objects;
     private ApiError error;
 
     public ApiResponse() {
         this.timeStamp = LocalDateTime.now();
     }
 
-    public ApiResponse(T data) {
+    public ApiResponse(T objects) {
         this();
-        this.data = data;
+        this.objects = objects;
     }
 
     public ApiResponse(ApiError error) {
