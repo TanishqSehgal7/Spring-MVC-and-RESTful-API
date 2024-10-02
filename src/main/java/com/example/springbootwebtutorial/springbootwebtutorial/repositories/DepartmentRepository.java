@@ -8,5 +8,8 @@ import org.springframework.stereotype.Repository;
 public interface DepartmentRepository extends JpaRepository<DepartmentEntity,Long> {
 
     boolean existsByTitle(String title);
+    boolean existsByDepartmentCode(Integer departmentCode);
+
+    boolean existsByDepartmentEmail(String email);
 
 }

@@ -44,7 +44,12 @@ public class DepartmentService {
 
         if(departmentRepository.existsByTitle(departmentDto.getTitle())) {
             throw new IllegalArgumentException("A department with the same title already exists.");
-        } else {
+        } else if(departmentRepository.existsByDepartmentCode(departmentDto.getDepartmentCode())) {
+            throw new IllegalArgumentException("A department with the same department code already exists");
+        } else if(departmentRepository.existsByDepartmentEmail(departmentDto.getDepartmentEmail())) {
+            throw new IllegalArgumentException("A department with the same department email already exists");
+        }
+        else {
             DepartmentEntity departmentEntityToBeSaved = modelMapper.map(departmentDto, DepartmentEntity.class);
             DepartmentEntity savedEntity = departmentRepository.save(departmentEntityToBeSaved);
             return modelMapper.map(savedEntity, DepartmentDto.class);
