@@ -2,12 +2,9 @@ package com.example.springbootwebtutorial.springbootwebtutorial.controllers;
 
 import com.example.springbootwebtutorial.springbootwebtutorial.advices.ResourceNotFoundException;
 import com.example.springbootwebtutorial.springbootwebtutorial.dto.DepartmentDto;
-import com.example.springbootwebtutorial.springbootwebtutorial.dto.EmployeeDto;
-import com.example.springbootwebtutorial.springbootwebtutorial.entities.DepartmentEntity;
 import com.example.springbootwebtutorial.springbootwebtutorial.services.DepartmentService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
