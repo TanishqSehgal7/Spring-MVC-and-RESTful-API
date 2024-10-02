@@ -25,4 +25,16 @@ public class DepartmentEntity {
 
     private boolean isActive;
     private LocalDate createdAt;
+
+    private Integer teamSize;
+
+    @Column(unique = true, nullable = false)
+    private Integer departmentCode;
+
+    private String deptManagerName;
+
+    private Integer budget;
+
+    @Column(unique = true, nullable = false)
+    private String departmentEmail;
 }
